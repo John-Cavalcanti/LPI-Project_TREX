@@ -3,6 +3,8 @@
 #include <time.h>
 #include <conio.h>
 
+int flag = 1;
+
 void desenha_cara(int x)
 {
     if (x == 1)
@@ -15,7 +17,7 @@ void desenha_cara(int x)
     {
         printf(" O \n");
         printf("/|)\n");
-        printf(" J\\ ");
+        printf(" J\\");
     }
     else
     {
@@ -52,11 +54,12 @@ void delay(ms)
         ;
 }
 
-void maybeStop()
+void selection()
 {
     switch (getch())
     {
     case 49:
+        flag = 0;
         break;
     case 50:
         exit(0);
@@ -64,47 +67,77 @@ void maybeStop()
     }
 }
 
-void printarAnima()
+void menuTeste()
+{
+    system("cls");
+    printf("\n\n1 - inicia animacao\n");
+    printf("2 - para animacao depois de iniciada / termina execucao");
+}
+
+/* void printarAnima()
+{
+    
+    movements(); 
+}
+ */
+void movements()
 {
     int x = 0, moment;
+
+    // testes antigos nao mais utilizados
     /* time_t start, end;
     long unsigned t; */
 
     //start = time(NULL);
 
-    for (x = 0; !kbhit() && x < 500; x++)
+
+
+
+    selection();
+
+
+    for (x = 0; !kbhit() && x < 500 && flag == 0; x++)
     {
         /* end = time(NULL);
         moment = difftime(end, start); */
+        system("cls");
 
         moment = x;
         //printf("%.1f",moment);
-
-        if (moment % 2 == 0)
-        {
-            desenha_cara(1);
-        }
-        else if (moment % 2 != 0)
-        {
-            desenha_cara(2);
-        }
-        else
+        
+        if(moment == 0)
         {
             desenha_cara(0);
         }
+        else if (moment % 2 == 0)
+        {
+            desenha_cara(1);
+        }
+        else //if (moment % 2 != 0)
+        {
+            desenha_cara(2);
+        }
 
         // funcao delay pra determinar um tempo antes de cumprir proxima acao
-        delay(500);
+        delay(250);
 
-        system("cls");
+        
     }
-    maybeStop();
+
 }
+
+
 
 int main(void)
 {
+
+    menuTeste();
+
     while (1)
     {
-        printarAnima();
+        movements();
     }
+
+    return 0;
 }
+
