@@ -45,26 +45,39 @@ void desenha_cara(int x)
 }
  */
 
-
 void delay(ms)
 {
     clock_t timeDelay = ms + clock();
-    while (timeDelay > clock());
+    while (timeDelay > clock())
+        ;
 }
 
-int main(void)
+void maybeStop()
+{
+    switch (getch())
+    {
+    case 49:
+        break;
+    case 50:
+        exit(0);
+        break;
+    }
+}
+
+void printarAnima()
 {
     int x = 0, moment;
-    time_t start, end;
-    long unsigned t;
+    /* time_t start, end;
+    long unsigned t; */
 
-    start = time(NULL);
+    //start = time(NULL);
 
-    for (x = 0; x < 500; x++)
+    for (x = 0; !kbhit() && x < 500; x++)
     {
-        end = time(NULL);
-        moment = difftime(end, start);
+        /* end = time(NULL);
+        moment = difftime(end, start); */
 
+        moment = x;
         //printf("%.1f",moment);
 
         if (moment % 2 == 0)
@@ -80,10 +93,18 @@ int main(void)
             desenha_cara(0);
         }
 
+        // funcao delay pra determinar um tempo antes de cumprir proxima acao
+        delay(500);
+
         system("cls");
     }
-    if (getch() == 83)
+    maybeStop();
+}
+
+int main(void)
+{
+    while (1)
     {
-        return 0;
+        printarAnima();
     }
 }
