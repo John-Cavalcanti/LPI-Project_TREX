@@ -27,26 +27,8 @@ void desenha_cara(int x)
     }
 }
 
-/* int main(void)
-{
-
-    time_t start, end;
-    long unsigned t;
-
-    start = time(NULL);
-
-    for (t = 0; t <= 1000; t++)
-    {
-        system("cls");
-        end = time(NULL);
-        printf("%.1f segs\n", difftime(end, start));
-
-    }
-
-    return 0;
-}
- */
-
+//essa função determina um delay para a proxima ação acontecer
+// exemplo : delay(200); pausa as ações em 200 milisegundos e depois continua
 void delay(ms)
 {
     clock_t timeDelay = ms + clock();
@@ -54,6 +36,8 @@ void delay(ms)
         ;
 }
 
+// seleção entre 1 e 2 para executar as ações no menu
+// 49 = 1, 50 = 2
 void selection()
 {
     switch (getch())
@@ -67,19 +51,16 @@ void selection()
     }
 }
 
+//apenas imprime o menu inicial
 void menuTeste()
 {
+
     system("cls");
     printf("\n\n1 - inicia animacao\n");
     printf("2 - para animacao depois de iniciada / termina execucao");
 }
 
-/* void printarAnima()
-{
-    
-    movements(); 
-}
- */
+// faz as animacoes
 void movements()
 {
     int x = 0, moment;
@@ -90,13 +71,29 @@ void movements()
 
     //start = time(NULL);
 
-
-
-
+    //  seleção para iniciar as animações ou parar o programa
     selection();
 
+    /*  1 - declara como x = 0
 
-    for (x = 0; !kbhit() && x < 500 && flag == 0; x++)
+        2 - condicoes : 
+          1a : enquanto não tenha nenhum "keybordhit" no teclado
+
+          2a : vai repetir o programa sem parar ate 500 repetições
+               apenas exemplo
+
+          3a : enquanto flag = 0 for verdadeiro executa a função,
+               isso é feito para quando apertarmos "2" na seleção
+               o programa muda a flag para "1" e a condição não 
+               eh verdadeira, então o loop encerra e o programa fecha
+               como determinado nas condições da seleção   
+
+        3 - incrementa o x para continuar executando o loop caso
+            todas as condições sejam satisfeitas           
+    */
+
+    //     1                          2                      3
+    for (x = 0;       !kbhit() && x < 500 && flag == 0;     x++)
     {
         /* end = time(NULL);
         moment = difftime(end, start); */
@@ -104,8 +101,8 @@ void movements()
 
         moment = x;
         //printf("%.1f",moment);
-        
-        if(moment == 0)
+
+        if (moment == 0)
         {
             desenha_cara(0);
         }
@@ -120,17 +117,12 @@ void movements()
 
         // funcao delay pra determinar um tempo antes de cumprir proxima acao
         delay(250);
-
-        
     }
-
 }
-
-
 
 int main(void)
 {
-
+    //imprime o menu e continua para os movimentos
     menuTeste();
 
     while (1)
@@ -140,4 +132,3 @@ int main(void)
 
     return 0;
 }
-
