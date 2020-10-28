@@ -28,6 +28,7 @@ int main()
     char opcao;
 
     DesenhaMenu();
+    DesenhaDino();
     opcao = getch();
 
     switch(opcao)
