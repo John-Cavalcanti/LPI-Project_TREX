@@ -3,12 +3,13 @@
 #include <windows.h>
 #include <time.h>
 
+// Boa parte das variáveis desse código estão no escopo (global) do código para facilitar na manutenção deste.
 int dino_x = 20;
 int cactus_x = 80;
 int cactus_y = 15;
 int dino_y = 15;
 
-//velocity 1 - EASY 2 - MEDIUM 3 - HARD
+//velocidade da movimentação do cacto 1 - EASY 2 - MEDIUM 3 - HARD
 int velocity = 1;
 
 unsigned int score = 0;
@@ -32,6 +33,10 @@ void delay(unsigned int mseconds)
     while (goal > clock());
 }
 
+/* 
+ * Essa função realiza a computação da pontuação a cada 1 segundo.
+ * Nota: A condição presente no if funciona semelhante a função delay
+ */
 void time_score() {
 
     if(clock() - score_time >= 1000) 
@@ -43,6 +48,11 @@ void time_score() {
     }
 }
 
+/*
+ * Essa função configura a coloração do terminal e defini um layout. 
+ * Além disso, imprime informações referentes aos componentes do jogo
+ * (Coordenadas do dinossauro, o próprio e o score). 
+ */
 void setup()
 {
     system("mode con: lines=29 cols=82");
@@ -54,6 +64,13 @@ void setup()
     gotoxy(dino_x, dino_y);
     printf("A");
 }
+
+/*
+ * Essa função realiza a ação de fazer com que o cacto possa mover-se
+ * no jogo, através da adição de valores na coordena x do cacto. Além disso, 
+ * verifica se o cacto chegou até chegou na coordena x = 0 e Caso aconteça irá 
+ * imprimilo novamente na coordena x = 80;
+ */
 
 void cactus(int time)
 {
@@ -81,6 +98,15 @@ void cactus(int time)
     printf("C: %d", cactus_x); //x axis position cactus 
 
 }
+
+/*
+ * Essa função realiza a ação de fazer com que o dinossauro possa pular
+ * no jogo, através de laços de repetições que irão adiciona valores na 
+ * coordenada y do dinossauro. Além disso, realiza a verificação para saber
+ * se o dinossauro encontra-se no chão (on_ground) para que tal ação seja 
+ * válida. Caso o contrário irá verificar se existe colisão. 
+ * (Coordenadas do dinossauro, o próprio e o score). 
+ */
 
 void jump(char on_ground)
 {
@@ -152,3 +178,5 @@ int main()
         
     }
 }
+
+//"É SÓ USAR A INTUIÇAO" - CIBORGUE JESUS, 2019
