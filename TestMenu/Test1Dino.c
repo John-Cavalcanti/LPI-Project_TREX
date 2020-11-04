@@ -11,7 +11,7 @@ printf("            %c%c%c%c%c%c\n          %c%c%c%c%c%c%c%c%c%c%c\n          %c
 void DesenhaMenu()
 {
     printf("  _____           ____    _____  __  __    ____    _   _   _   _   _   _   ___   _   _    ____\n"); printf(" |_   _|         |  _ \\  | ____| \\ \\/ /   |  _ \\  | | | | | \\ | | | \\ | | |_ _| | \\ | |  / ___|\n");  printf("   | |    _____  | |_) | |  _|    \\  /    | |_) | | | | | |  \\| | |  \\| |  | |  |  \\| | | |  _\n"); printf("   | |   |_____| |  _ <  | |___   /  \\    |  _ <  | |_| | | |\\  | | |\\  |  | |  | |\\  | | |_| |\n"); printf("   |_|           |_| \\_\\ |_____| /_/\\_\\   |_| \\_\\  \\___/  |_| \\_| |_| \\_| |___| |_| \\_|  \\____|\n");
-    printf("\n\n\n\n                                               Press 1 to Start\n"); printf("                                               Press 2 to Ranking\n"); printf("                                               Press 3 to Controls\n"); printf("                                               Press 4 to Credits\n"); printf("                                               Press 5 to Exit\n\n\n\n");
+    printf("\n\n\n\n                                   Press 1 to Start\n"); printf("                                   Press 2 to Ranking\n"); printf("                                   Press 3 to Controls\n"); printf("                                   Press 4 to Credits\n"); printf("                                   Press 5 to Exit\n\n\n\n");
 }
 
 
@@ -20,11 +20,8 @@ int main()
     //mudar a cor
     system("mode con: lines=29 cols=82");
     system("color a");
-    //botar o jogo em tela cheia (modificar isso depois pra apenas redimensionar pra 800x800)
-    keybd_event ( VK_MENU, 0x36, 0, 0 );
-    keybd_event ( VK_RETURN, 0x1C, 0, 0 );
-    keybd_event ( VK_RETURN, 0x1C, KEYEVENTF_KEYUP, 0 );
-    keybd_event ( VK_MENU, 0x38, KEYEVENTF_KEYUP, 0 );
+    //redimensionar o console
+    system("MODE con cols=100 lines=35 ");
 
     char opcao;
 
