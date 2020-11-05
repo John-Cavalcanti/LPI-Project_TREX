@@ -230,7 +230,7 @@ void selecionadoPausa(int acaoPausa)
         break;
 
     case 3:
-        main();
+        menu();
         break;
 
     case 4:
