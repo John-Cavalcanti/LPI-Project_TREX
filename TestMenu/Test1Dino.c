@@ -18,7 +18,6 @@ void DesenhaMenu()
 int main()
 {
     //mudar a cor
-    system("mode con: lines=29 cols=82");
     system("color a");
     //redimensionar o console
     system("MODE con cols=100 lines=35 ");
