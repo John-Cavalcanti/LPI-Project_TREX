@@ -157,7 +157,10 @@ void desenhaJogoPausa(int opcao)
 }
 
 /* ------------- PROTOTIPO DO JOGO ------------------- */
-
+void voltaMenu(int opcao)
+{
+    printf("Voltar para o menu? \n\n -> Sim \n\n   Nao\n\n");
+}
 void selection()
 {
     system("cls");
@@ -294,34 +297,44 @@ void selecionadoMenu(int opcao)
     system("cls");
 
     /* int opcao;
-
     opcao = menuSelected; */
 
     switch (opcao)
     {
     case 1:
-        printf("\nTem jogo ainda n rei");
         gamePrototype();
         exit(0);
         break;
 
     case 2:
-        printf("\nTbm n tem ranking kk");
-        exit(0);
+        printf("\nTbm n tem ranking kk\n\n\nPressione qualquer tecla para voltar ao menu");
+        opcao=getch();
+        while (opcao != 0)
+        {
+            menu();
+        }
         break;
 
     case 3:
-        printf("\nPutz esse jogo n tem nd msm kk");
-        exit(0);
+        printf("\n              Barra de Espaco - Pular\n              P - Pausar\n\n\n              Aperte qualquer tecla para voltar ao menu");
+        opcao=getch();
+        while (opcao != 0)
+        {
+            menu();
+        }
         break;
 
     case 4:
-        printf("\nJaja esse jogo fica pronto pode relaxar");
-        exit(0);
+        printf("\n              Jogo feito por :\n\n              -Bernardo Diniz\n              -Gabriel Pereira\n              -Joao Victor Pereira S.\n              -Riquelme Lopes\n\n\n              Aperte qualquer tecla para voltar ao menu");
+        opcao=getch();
+        while (opcao != 0)
+        {
+            menu();
+        }
         break;
 
     case 5:
-        printf("\nAte a proxima!");
+        printf("\n\n              Ate a proxima!\n\n\n");
         exit(0);
     }
 }
@@ -329,12 +342,10 @@ void selecionadoMenu(int opcao)
 int selectingMenu()
 {
     /* codigos para as setas
-
        ^ - 72
        v - 80
        > - 26
        < - 27
-
      */
 
     switch (getch())
@@ -385,16 +396,10 @@ void menu()
 
 int main()
 {
-    //mudar a cor
+    //mudar a cor e redimensiona
     system("MODE con cols=100 lines=35 ");
     system("color a");
 
-    //botar o jogo em tela cheia (modificar isso depois pra apenas redimensionar pra 800x800)
-    /*  keybd_event(VK_MENU, 0x36, 0, 0);
-    keybd_event(VK_RETURN, 0x1C, 0, 0);
-    keybd_event(VK_RETURN, 0x1C, KEYEVENTF_KEYUP, 0);
-    keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); */
-
         menu();
-    
+
 }
