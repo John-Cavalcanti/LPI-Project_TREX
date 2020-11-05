@@ -32,7 +32,7 @@ void delay(ms)
         ;
 }
 
-// seleção entre 1 e 2 para executar as ações no menu
+// seleÃ§Ã£o entre 1 e 2 para executar as aÃ§Ãµes no menu
 // 49 = 1, 50 = 2
 void selection()
 {
