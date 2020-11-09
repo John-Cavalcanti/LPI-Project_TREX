@@ -3,6 +3,11 @@
 #include <conio.h>
 #include <string.h>
 
+/* O RANKING ESTA TOTALMENTE FUNCIONAL
+   POREM FALTA SALVA-LO EM FILES PARA
+   MANIPULAR E LER  
+*/
+
 struct rank
 {
     char nome[10];
