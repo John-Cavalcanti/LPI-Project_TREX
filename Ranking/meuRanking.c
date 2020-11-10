@@ -17,10 +17,13 @@ struct rank
 // criando o array com os ranking e um auxiliar para passar os valores pro principal
 struct rank ranking[10], gameOverData;
 
+FILE *dadosRanking;
+
 //declarando as funcoes pra evitar erros e warnings
 void pegaPontuacao();
 void menuRanking();
 void mostraRanking();
+void arquivamentoRanking();
 
 int main()
 {
@@ -71,7 +74,8 @@ void pegaPontuacao()
 
             printf("Seu nome deve ter 3 digitos\nDigite novamente: ");
         }
-        else{
+        else
+        {
             printf("Digite seu nome: ");
         }
 
@@ -144,9 +148,32 @@ void pegaPontuacao()
         }
     }
 
+    arquivamentoRanking();
+
     printf("\n\nPressione qualquer tecla para voltar ao menu.\n");
     getch();
     menuRanking();
+}
+
+void arquivamentoRanking()
+{
+    int ind;
+    dadosRanking = fopen("ranking.txt", "w");
+
+    if ((dadosRanking = fopen("ranking.txt", "w")) == NULL)
+    {
+        printf("Nao foi possivel abrir o arquivo ranking.txt\n");
+        printf("reinicie o programa\n");
+        printf("Aperte qualquer tecla para voltar ao menu principal");
+        getch();
+        menuRanking();
+    }
+
+    
+    fwrite(ranking, sizeof(struct rank), 10, dadosRanking);
+    
+
+    fclose(dadosRanking);
 }
 
 // o nome da funcao se autoafirma no que faz
@@ -154,24 +181,27 @@ void mostraRanking()
 {
     system("cls");
 
-    int i;
+    int j;
+
+    dadosRanking = fopen("ranking.txt", "r");
 
     printf(" ________________________________________\n");
     printf("| POSICAO |     NOME     |    PONTUACAO\t |\n");
-    printf("|---------|--------------|---------------|\n");
-
-    for (i = 0; i < 10; i++)
+    printf("|---------|--------------|---------------|\n"); 
+    for(j = 0; (fread(&ranking[j], sizeof(struct rank), 1, dadosRanking) == 1) ; j++)
     {
-        if (ranking[i].pontuacao == 0)
+        if (ranking[j].pontuacao == 0)
         {
-            printf("|   %02d \t  |\t%s\t |\t%03d\t |\n", i + 1, "aaa", 0);
+            printf("|   %02d \t  |\t%s\t |\t%03d\t |\n", j + 1, "aaa", 0);
         }
         else
         {
-            printf("|   %02d \t  |\t%s\t |\t%03d\t |\n", i + 1, ranking[i].nome, ranking[i].pontuacao);
+            printf("|   %02d \t  |\t%s\t |\t%03d\t |\n", j + 1, ranking[j].nome, ranking[j].pontuacao);
         }
     }
     printf("|_________|______________|_______________|");
+
+    fclose(dadosRanking);
 
     printf("\n\nPressione qualquer tecla para voltar ao menu.\n");
     getch();
