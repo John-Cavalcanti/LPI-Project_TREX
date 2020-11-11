@@ -100,7 +100,7 @@ void draw_cactusA()
         }
 
         gotoxy(cactus_xA[0], cactus_y[0]);
-        printf("    a_ ");
+        printf("    _ ");
         gotoxy(cactus_xA[1], cactus_y[1]);
         printf(" _ ( )   ");
         gotoxy(cactus_xA[2], cactus_y[2]);
@@ -163,7 +163,7 @@ void draw_cactusB()
         }
 
         gotoxy(cactus_xB[0], cactus_y[0]);
-        printf("    b_ ");
+        printf("    _ ");
         gotoxy(cactus_xB[1], cactus_y[1]);
         printf(" _ ( )   ");
         gotoxy(cactus_xB[2], cactus_y[2]);
