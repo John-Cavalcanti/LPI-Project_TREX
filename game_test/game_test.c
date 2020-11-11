@@ -130,7 +130,7 @@ void draw_cactusB()
 {
     int x = -1;
 
-    if(cactus_xB[3] == 5)
+    if(cactus_xB[3] == 4)
     {
         gotoxy(cactus_xB[0], cactus_y[0]);
         printf("      ");
@@ -440,9 +440,21 @@ void setup()
     score = 0;
 }
 
+int colisao()
+{
+    int i;
+    for(i = 26; i <= 32; i++)
+    {
+        if(cactus_xA[i] == dino_y[i] || cactus_xB[i] == dino_y[i])
+            return 1;
+        else
+            return 0;
+    }
+}
+
 void jump(char on_ground)
 {
-    if(on_ground == 1 && (cactus_xB[2] == 23 || cactus_xA[2] == 23))
+    if(on_ground == 1 && (cactus_xA[3] <= dino_y[10] || (cactus_xB[3] <= dino_y[10] && cactus_xB[3] != 4 && cactus_xB[3] <= 5)) && colisao())
     {
         system("cls");
         printf("Game Over!\n");
@@ -464,7 +476,7 @@ void jump(char on_ground)
         for(i = 0; i < 15; i++)
         {
             draw_dino_up(1);
-            cactus(1);
+            cactus(0);
             draw_time_score();
             delay(time_dino - 1);
         }
@@ -472,7 +484,7 @@ void jump(char on_ground)
         for(i = 0; i < 15; i++)
         {
             draw_dino_down(1);;
-            cactus(1);
+            cactus(0);
             draw_time_score();
             delay(time_dino - 1);
         }
